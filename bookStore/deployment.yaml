@@ -87,9 +87,7 @@ spec:
                 secretKeyRef:
                   name: mysql-secret
                   key: password
-          volumeMounts:
-            - name: mysql-data
-              mountPath: /data/db
+          
       
 
 ---
