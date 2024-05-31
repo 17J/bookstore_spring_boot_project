@@ -18,12 +18,6 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
-          lifecycle:
-              preStart:
-                exec:
-                  command: ["sh","-c","until kubectl get pods -n webapps | grep mysql | grep Running; do sleep 1; done"]
-
-
 ---
 
 apiVersion: v1 # Kubernetes API version
