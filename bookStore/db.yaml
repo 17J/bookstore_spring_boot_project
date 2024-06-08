@@ -10,7 +10,7 @@ type: Opaque
 data:
   username: cm9vdA==
   password: cm9vdEAxMjM=
-  defaultdatabase: YnVndHJhY2tlcgo=
+  defaultdatabase: Ym9vaw==
 ---
 
 apiVersion: apps/v1
