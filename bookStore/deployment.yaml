@@ -1,12 +1,14 @@
+
 apiVersion: apps/v1
 kind: Deployment # Kubernetes resource kind we are creating
 metadata:
+  namespace: webapps
   name: bookstore-deployment
 spec:
   selector:
     matchLabels:
       app: bookstore
-  replicas: 2 # Number of replicas that will be created for this deployment
+  replicas: 3 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
@@ -15,6 +17,7 @@ spec:
       containers:
         - name: bookstore
           image: 17rj/bookstoreapp:latest # Image that will be used to containers in the cluster
+          command: ["sleep", "1000"]
           imagePullPolicy: Always
           ports:
             - containerPort: 8080 # The port that the container is running on in the cluster
@@ -23,6 +26,7 @@ spec:
 apiVersion: v1 # Kubernetes API version
 kind: Service # Kubernetes resource kind we are creating
 metadata: # Metadata of the resource kind we are creating
+  namespace: webapps
   name: bookstore-ssvc
 spec:
   selector:
@@ -32,6 +36,4 @@ spec:
       port: 8080 # The port that the service is running on in the cluster
       targetPort: 8080 # The port exposed by the service
   type: LoadBalancer # type of the service.
-
-
 
