@@ -16,6 +16,7 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: webapps
   name: mysql
   labels:
     app: mysql
@@ -31,7 +32,7 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql
+          image: mysql:latest
           ports:
             - containerPort: 3306
           env:
